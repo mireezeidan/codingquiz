@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
     <title>Coding Quiz</title>
 </head>
 
 
 <body>
     <header>
-        <a href="highscores">View Highscores</a>
-        <div class="timer">Timer</div>
+        <a id='highscore' href="highscores">View Highscores</a>
+        <div id="timer">Timer</div>
     </header>
     <!-- Title -->
     <h1>Coding Quiz</h1>
@@ -22,7 +23,15 @@
     <!-- make clicking the button start the quiz -->
     <button id="startQuiz">Start Quiz</button>
     <!-- attach questions here -->
-    <div id="questions"></div>
+    <div id="questions" class="d-f ai-c jc-c fxd-c"></div>
+    <form id="initials">
+        <p>Enter your initials</p>
+        <input id="initialsInput" type="text">
+        <button id="saveInitials" type="submit">Save</button>
+    </form>
+    <div id="allScores">
+
+    </div>
     <script src="./script.js"></script>
 </body>
 

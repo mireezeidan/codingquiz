@@ -1,0 +1,23 @@
+/* position */
+
+.ai-c {
+    align-items: center;
+}
+
+.d-f {
+    display: flex;
+}
+
+.fxd-c {
+    flex-direction: column;
+}
+
+.jc-c {
+    justify-content: center;
+}
+
+.mt-05r {
+    margin-top: .5rem;
+}
+
+
