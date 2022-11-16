@@ -14,6 +14,7 @@ let questions = [
   { title: "Which of the following isn't a type in JavaScript?", choices: ["strings", "numbers", "objects", "headings"], answer: "headings" },
   { title: "this is the third question", choices: ["a", "b", "c", "d"], answer: "d" },
 ];
+let correctOrNot = ["Correct", "Incorrect"];
 let scores = JSON.parse(localStorage.getItem("scores")) || [];
 let questionsIndex = 0;
 let time = 60;
@@ -60,6 +61,7 @@ function createButton(index) {
 }
 
 function endGame() {
+  questionDiv.innerHTML = "";
   let heading = document.createElement("h1");
   heading.innerHTML = "Quiz is Over!";
   questionDiv.appendChild(heading);
@@ -94,28 +96,33 @@ function viewScoreInitials(event) {
   });
 }
 
-// function calls
-startQuizbtn.addEventListener("click", startQuiz);
-
-questionDiv.addEventListener("click", function (event) {
+function checkAnswer(event) {
   let choice = event.target.innerHTML;
   let answer = event.target.dataset.answer;
+  let verify = document.createElement("p");
+  questionsIndex++;
 
   if (choice === answer) {
-    alert("correct");
-    questionsIndex++;
+    verify.textContent = correctOrNot[0];
+    questionDiv.appendChild(verify);
     if (questionsIndex > questions.length - 1) {
       endGame();
     } else {
       createButton(questionsIndex);
     }
     // locally store how many answers were correct and incorrect
-    localStorage.setItem("correct answer", choice);
   } else {
-    alert("incorrect");
-    localStorage.setItem("incorrect answer", choice);
+    verify.textContent = correctOrNot[1];
+    questionDiv.appendChild(verify);
+    time = time - 10;
+    createButton(questionsIndex);
   }
-});
+}
+
+// function calls
+startQuizbtn.addEventListener("click", startQuiz);
+
+questionDiv.addEventListener("click", checkAnswer);
 
 intialForm.addEventListener("submit", handleInitialScoreSave);
 
