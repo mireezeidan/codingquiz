@@ -30,6 +30,7 @@ function startQuiz() {
     timerDiv.innerHTML = time;
   }, 1000);
   introDiv.classList.add("hidden");
+  highscoreTag.classList.add("hidden");
   questionDiv.classList.remove("hidden");
   createButton(0);
 

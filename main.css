@@ -1,5 +1,4 @@
 /* position */
-
 .ai-c {
     align-items: center;
 }
@@ -20,9 +19,30 @@
     margin-top: .5rem;
 }
 
+.p-3r {
+    padding: 3rem;
+}
+
+.w-50 {
+    width: 50%;
+}
+
 .hidden {
     display: none;
 }
+
+/* colors */
+.bkg-beige {
+    background-color: beige;
+}
+.bkg-palegoldenrod {
+    background-color: palegoldenrod;
+}
+
+.c-red {
+    color: red;
+}
+
 /* button style */
 .btnOne {
     margin-top: .5rem;
@@ -38,4 +58,13 @@
 
 .btnFour {
     margin-top: .5rem;
+}
+
+/* typography */
+.fw-bold {
+    font-weight: bold;
+}
+
+.fs-3r {
+    font-size: 3rem;
 }
