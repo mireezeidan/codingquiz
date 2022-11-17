@@ -5,6 +5,8 @@ let timerDiv = document.querySelector(`#timer`);
 let allScoresDiv = document.querySelector("#allScores");
 let intialForm = document.querySelector("#initials");
 let highscoreTag = document.querySelector("#highscore");
+let introDiv = document.querySelector("#intro");
+let titleEL = document.querySelector("#title");
 let questions = [
   {
     title: "Which of the following isn't a coding language?",
@@ -27,6 +29,8 @@ function startQuiz() {
     time--;
     timerDiv.innerHTML = time;
   }, 1000);
+  introDiv.classList.add("hidden");
+  questionDiv.classList.remove("hidden");
   createButton(0);
 
   //   bring up question one
@@ -35,17 +39,20 @@ function startQuiz() {
 }
 
 function createButton(index) {
+  questionDiv.innerHTML = "";
   let title = document.createElement("h2");
   title.textContent = questions[index].title;
   questionDiv.appendChild(title);
   // add 4 answer options
   let btnOne = document.createElement("button");
   btnOne.textContent = questions[index].choices[0];
+  btnOne.classList = 'btnOne'
   btnOne.dataset.answer = questions[index].answer;
   questionDiv.appendChild(btnOne);
 
   let btnTwo = document.createElement("button");
   btnTwo.textContent = questions[index].choices[1];
+  btnTwo.classList = "btnTwo";
   btnTwo.dataset.answer = questions[index].answer;
   questionDiv.appendChild(btnTwo);
 
@@ -69,6 +76,8 @@ function endGame() {
   score = time;
   clearInterval(timer);
   console.log(score);
+  initials.classList.remove("hidden");
+  titleEL.classList.add("hidden");
   // display the score by getting it from local storage
   // add button to restart the quiz
 
@@ -77,20 +86,21 @@ function endGame() {
 
 function handleInitialScoreSave(event) {
   event.preventDefault();
-  let initials = document.querySelector("#initialsInput").value;
+  let initial = document.querySelector("#initialsInput").value;
   document.querySelector("#initialsInput").value = "";
-  console.log(initials);
+  console.log(initial);
   let userScore = {
-    initials: initials,
+    initials: initial,
     score: score,
   };
   scores.push(userScore);
 
   localStorage.setItem("scores", JSON.stringify(scores));
+  initials.classList.add("hidden");
+  viewScoreInitials();
 }
 
-function viewScoreInitials(event) {
-  event.preventDefault();
+function viewScoreInitials() {
   scores.forEach((score) => {
     allScoresDiv.innerHTML += `${score.initials}: ${score.score} <br>`;
   });
@@ -101,21 +111,27 @@ function checkAnswer(event) {
   let answer = event.target.dataset.answer;
   let verify = document.createElement("p");
   questionsIndex++;
-
+  let btn = event.target;
   if (choice === answer) {
     verify.textContent = correctOrNot[0];
     questionDiv.appendChild(verify);
-    if (questionsIndex > questions.length - 1) {
-      endGame();
-    } else {
-      createButton(questionsIndex);
-    }
+    btn.style.backgroundColor = "chartreuse";
     // locally store how many answers were correct and incorrect
   } else {
     verify.textContent = correctOrNot[1];
     questionDiv.appendChild(verify);
+    btn.style.backgroundColor = "red";
     time = time - 10;
-    createButton(questionsIndex);
+    // createButton(questionsIndex);
+  }
+  if (questionsIndex > questions.length - 1) {
+    setTimeout(function () {
+      endGame();
+    }, 500);
+  } else {
+    setTimeout(function () {
+      createButton(questionsIndex);
+    }, 500);
   }
 }
 
@@ -126,4 +142,7 @@ questionDiv.addEventListener("click", checkAnswer);
 
 intialForm.addEventListener("submit", handleInitialScoreSave);
 
-highscoreTag.addEventListener("click", viewScoreInitials);
+highscoreTag.addEventListener("click", function (event) {
+  event.preventDefault();
+  viewScoreInitials();
+});

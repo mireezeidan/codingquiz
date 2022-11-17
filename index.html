@@ -13,24 +13,28 @@
 <body>
     <header>
         <a id='highscore' href="highscores">View Highscores</a>
-        <div id="timer">Timer</div>
+        <div id="timer" class="d-f ai-c jc-c fxd-c">60</div>
     </header>
-    <!-- Title -->
-    <h1>Coding Quiz</h1>
-    <!-- paragraph about the game -->
-    <p>Do you want to take a quiz?</p>
-    <!-- start button -->
-    <!-- make clicking the button start the quiz -->
-    <button id="startQuiz">Start Quiz</button>
-    <!-- attach questions here -->
-    <div id="questions" class="d-f ai-c jc-c fxd-c"></div>
-    <form id="initials">
-        <p>Enter your initials</p>
-        <input id="initialsInput" type="text">
-        <button id="saveInitials" type="submit">Save</button>
-    </form>
-    <div id="allScores">
+    <div class="d-f ai-c jc-c fxd-c">
+        <!-- Title -->
+        <h1 id="title">Coding Quiz</h1>
+        <!-- paragraph about the game -->
+        <div id="intro">
+            <p>Do you want to take a quiz?</p>
+            <!-- start button -->
+            <!-- make clicking the button start the quiz -->
+            <button id="startQuiz">Start Quiz</button>
+        </div>
+        <!-- attach questions here -->
+        <div id="questions" class="d-f ai-c jc-c fxd-c hidden"></div>
+        <form id="initials" class="hidden">
+            <p>Enter your initials</p>
+            <input id="initialsInput" type="text">
+            <button id="saveInitials" type="submit">Save</button>
+        </form>
+        <div id="allScores">
 
+        </div>
     </div>
     <script src="./script.js"></script>
 </body>
