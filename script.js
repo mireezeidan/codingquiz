@@ -46,7 +46,7 @@ function createButton(index) {
   // add 4 answer options
   let btnOne = document.createElement("button");
   btnOne.textContent = questions[index].choices[0];
-  btnOne.classList = 'btnOne'
+  btnOne.classList = "btnOne";
   btnOne.dataset.answer = questions[index].answer;
   questionDiv.appendChild(btnOne);
 
@@ -58,11 +58,13 @@ function createButton(index) {
 
   let btnThree = document.createElement("button");
   btnThree.textContent = questions[index].choices[2];
+  btnThree.classList = "btnThree";
   btnThree.dataset.answer = questions[index].answer;
   questionDiv.appendChild(btnThree);
 
   let btnFour = document.createElement("button");
   btnFour.textContent = questions[index].choices[3];
+  btnFour.classList = "btnFour";
   btnFour.dataset.answer = questions[index].answer;
   questionDiv.appendChild(btnFour);
 }
@@ -122,7 +124,6 @@ function checkAnswer(event) {
     questionDiv.appendChild(verify);
     btn.style.backgroundColor = "red";
     time = time - 10;
-    // createButton(questionsIndex);
   }
   if (questionsIndex > questions.length - 1) {
     setTimeout(function () {

@@ -23,7 +23,19 @@
 .hidden {
     display: none;
 }
+/* button style */
+.btnOne {
+    margin-top: .5rem;
+}
 
 .btnTwo {
+    margin-top: .5rem;
+}
+
+.btnThree {
+    margin-top: .5rem;
+}
+
+.btnFour {
     margin-top: .5rem;
 }
