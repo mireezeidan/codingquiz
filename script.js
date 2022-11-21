@@ -14,7 +14,9 @@ let questions = [
     answer: "Blanket",
   },
   { title: "Which of the following isn't a type in JavaScript?", choices: ["strings", "numbers", "objects", "headings"], answer: "headings" },
-  { title: "this is the third question", choices: ["a", "b", "c", "d"], answer: "d" },
+  { title: "An HTML heading can be created with which tag?", choices: ["<h1>", "<p>", "<a>", "<src>"], answer: "<h1>" },
+  { title: "Which method allows you to create an element in JavaScript?", choices: ["createElement()", "querySelector()", "appendChild()", "setItem()"], answer: "createElement()" },
+  { title: "Which character is used in JavaScript to identify an ID from the HTML file", choices: ["&", "^", "#", "."], answer: "#" },
 ];
 let correctOrNot = ["Correct", "Incorrect"];
 let scores = JSON.parse(localStorage.getItem("scores")) || [];
